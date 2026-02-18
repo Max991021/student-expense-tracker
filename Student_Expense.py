@@ -1,4 +1,5 @@
 import csv
+
 class Tracker:
     
     def __init__(self,item = None,price = None):
@@ -6,6 +7,7 @@ class Tracker:
         self.price = price
     
     def items(self):
+        tracker_dict = {}
         with open('expenses.csv', 'r', errors='ignore') as file:
             content = file.read.split(',')
             
@@ -18,7 +20,12 @@ class Tracker:
             for i in range(2,len(content),2):
                 price.append(content[i])
                 
+            for i in names:
+                tracker_dict[i] = f'{expense_catagory[i]} R {price}'
             
+            
+        for key, value in tracker_dict.items():
+            print(f'{key}, {value}')
                 
     
     def amount(self):
